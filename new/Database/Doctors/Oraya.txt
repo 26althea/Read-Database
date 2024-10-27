@@ -1,0 +1,7 @@
+Doctor info:
+Name: Lawrence Anthony Oraya
+Specialty: Gynecologist
+Schedule: Monday | Tuesday | Wednesday
+Current Patients:
+Patient 1: Tae ko mabaho
+
