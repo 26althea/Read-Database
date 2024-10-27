@@ -67,8 +67,8 @@ public class bta {
 class dat {
 
 
-    String folderPath = "Downloads\\new\\Database\\Doctors";
-   String fileName = "oraya";  
+  String folderPath = "Database\\Doctors";
+   String fileName = "";  
     String filePath = folderPath + "\\" + fileName + ".txt";
     File file = new File(filePath);
    
