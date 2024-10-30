@@ -53,38 +53,18 @@ int count = 0;
 taba taba = new taba();
 Scanner s = new Scanner(System.in);
 String role = "";
+String patientNum = new String();
 String folderPath = "Downloads\\Peta\\Database\\" + role;
+String fileName = new String();  
+String path = new String();
+File file = new File("wabalabadubdub");
 
-
-//Doctors file connected variables
-     String fileName = new String();  
-      String doctorsPath = new String();
-      File dFile = new File(doctorsPath);
-     // Patient file connected variables
-      String patientNum = new String();
-      String patientPath = new String();
-      File pFile = new File(patientPath);
-
-      String path = new String();
-      File file = new File("wabalabadubdub");
-
-      public void dSetFileName(String newfileName){
-          this.fileName = newfileName;
-          this.folderPath = "Downloads\\Peta\\Database\\" + role;
-          this.doctorsPath = folderPath + "\\" + fileName ;
-          this.dFile = new File(doctorsPath); 
-      }
-      public void pSetFileName(String newFileName){
-        this.fileName = newFileName;
-        this.folderPath = "Downloads\\Peta\\Database\\" + role;
-        this.patientPath = folderPath+"\\"+fileName;
-        this.pFile = new File(patientPath);
-      }
+ 
       public void setFileName(String newFileName){
         this.fileName = newFileName;
         this.folderPath = "Downloads\\Peta\\Database\\" + role;
         this.path = folderPath+"\\"+fileName;
-        this.file = new File(patientPath);
+        this.file = new File(path);
       }
     
       public void searhDoctor(){
@@ -96,11 +76,11 @@ String folderPath = "Downloads\\Peta\\Database\\" + role;
         System.out.println("Search for a doctor\nEnter doctor's last name: ");
         String lName = s.nextLine();
         lName +=".txt";
-        dSetFileName(lName);
+        setFileName(lName);
 
-        if(dFile.exists()){
+        if(file.exists()){
           count = 0;
-            readFile(dFile);
+            readFile(file);
             System.out.println("\nAre you done looking for doctors? ");
             String ans = s.nextLine();
             switch (ans.toLowerCase()) {
@@ -111,14 +91,17 @@ String folderPath = "Downloads\\Peta\\Database\\" + role;
                   ambaho = false;
             
                 }else{
+                  ambaho = false;
                   taba.isDone(false);
+                  System.out.println("Ending Process.");
 
                 }
               
                     
                     break;
                 case "no":
-                taba.isDone(true);
+                ambaho = false;
+               
                 break;
             
                 default:
@@ -186,7 +169,7 @@ String folderPath = "Downloads\\Peta\\Database\\" + role;
         String last = s.nextLine().trim();
         String first = s.nextLine().trim()  ;
         fileName = last.toUpperCase() + ","+first.toUpperCase();
-        pSetFileName(fileName);
+        setFileName(fileName);
         
        
         File path = new File(folderPath);
@@ -203,16 +186,18 @@ String folderPath = "Downloads\\Peta\\Database\\" + role;
         patientNum = s.nextLine();
 
         for(String names: listOfN){
-          
+      
           if(names.startsWith(fileName + "-" + patientNum)){
-          pSetFileName(names);
-          break;
-          }}
+            setFileName(names);
 
+          break;
+          }
+        }
+          
        
 
-        if(pFile.exists()){
-          readFile(pFile);
+        if(file.exists()){
+          readFile(file);
 
           System.out.println("\n Edit| Delete | Back");
           String choices = s.nextLine();
@@ -241,7 +226,7 @@ String folderPath = "Downloads\\Peta\\Database\\" + role;
               break;
           }
         }else{
-          System.out.println(pFile);
+          System.out.println(file);
           System.out.println("You're looking for something that doesn't exists");
         }
 
