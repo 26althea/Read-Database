@@ -85,7 +85,7 @@ File file = new File("wabalabadubdub");
             String ans = s.nextLine();
             switch (ans.toLowerCase()) {
                 case "yes":
-                System.out.println("Do you want to go back to mainscreen?");
+                System.out.println("Do you want to go back to main menu?");
                 String a = s.nextLine();
                 if(a.equalsIgnoreCase("yes")){
                   ambaho = false;
@@ -100,7 +100,7 @@ File file = new File("wabalabadubdub");
                     
                     break;
                 case "no":
-                ambaho = false;
+
                
                 break;
             
@@ -174,13 +174,20 @@ File file = new File("wabalabadubdub");
        
         File path = new File(folderPath);
         String []listOfN = path.list();
-       
+       boolean itExists = false;
         for(String names: listOfN){
           if(names.startsWith(fileName)){
             System.out.println(names);
+            itExists = true;
          
           }
         }
+        if (itExists == false) {
+          System.out.println("The patient does not exists.");
+          mabango = false;
+          break;
+        }
+
 
         System.out.println("Enter Patient's ID number: \nex.000001");
         patientNum = s.nextLine();
