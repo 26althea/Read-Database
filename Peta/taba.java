@@ -66,7 +66,19 @@ File file = new File("wabalabadubdub");
         this.path = folderPath+"\\"+fileName;
         this.file = new File(path);
       }
-    
+
+      public void deleteFile() {
+        if (file.exists()) {
+            if (file.delete()) {
+                System.out.println("File " + fileName + " deleted successfully.");
+            } else {
+                System.out.println("Failed to delete file " + fileName + ".");
+            }
+        } else {
+            System.out.println("File does not exist.");
+        }
+    }
+  
       public void searhDoctor(){
         taba.isDone(true);
         boolean ambaho = true;
@@ -213,6 +225,11 @@ File file = new File("wabalabadubdub");
               
               break;
           case "delete":
+              System.out.println("Are you sure you want to delete this file? yes|no");
+              String confirmDelete = s.nextLine();
+              if (confirmDelete.equalsIgnoreCase("yes")) {
+                 deleteFile();
+          }
 
           break;
           case "back":
@@ -230,6 +247,7 @@ File file = new File("wabalabadubdub");
           
           break;
             default:
+              System.out.println("Invalid option.");
               break;
           }
         }else{
